@@ -20,6 +20,9 @@ class FavoriteCity extends StatefulWidget {
 class _FavoriteCityState extends State<FavoriteCity> {
 
   String nameCity = "";
+  String _currentItemSelected = 'Dinares';
+  var _currencies = ['Dinares', 'Dollars', 'Euros', 'Others'];
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
