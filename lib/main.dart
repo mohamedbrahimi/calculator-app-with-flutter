@@ -41,6 +41,18 @@ class _FavoriteCityState extends State<FavoriteCity> {
                 });
               },
             ),
+            DropdownButton<String>(
+              items: _currencies.map((String dropDownStringItem) {
+                 return DropdownMenuItem<String>(
+                   value: dropDownStringItem,
+                   child: Text(dropDownStringItem),
+                 );
+               }).toList(),
+              onChanged: (String newValueSelected){
+                _onDropDownItemSelected(newValueSelected);
+              },
+              value: _currentItemSelected,
+            ),
             Padding(
               padding: EdgeInsets.all(30.0),
               child: Text(
