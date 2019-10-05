@@ -67,4 +67,10 @@ class _FavoriteCityState extends State<FavoriteCity> {
    );
   }
 
+  void _onDropDownItemSelected(String newValueSelected) {
+    setState(() {
+      _currentItemSelected = newValueSelected;
+    });
+  }
+
 }
