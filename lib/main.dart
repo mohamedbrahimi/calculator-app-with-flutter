@@ -22,17 +22,10 @@ class _FavoriteCityState extends State<FavoriteCity> {
   String nameCity = "";
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text("Statefull App Test ..."),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -61,8 +54,15 @@ class _FavoriteCityState extends State<FavoriteCity> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-          ],
-        ),
+            Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Text(
+                "The next city is $nameCity",
+                style: TextStyle(fontSize: 20.0),
+              ),
+            )
+           
+        ]
       ),
     )
    );
