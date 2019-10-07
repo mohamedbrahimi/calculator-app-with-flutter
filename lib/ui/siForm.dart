@@ -16,6 +16,7 @@ class _SIFormState extends State<SIForm> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Simple Interest Calculator'),
       ),
@@ -94,8 +95,23 @@ class _SIFormState extends State<SIForm> {
                         child: Text('Calculate'),
                         onPressed: () => {
 
-              ],
-            )
+                        }),
+                  ),
+                  Container(width: _minimumPadding * 5,),
+                  Expanded(
+                    child: RaisedButton(
+                        child: Text('Reset'),
+                        onPressed: () => {
+                          
+                        }),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(_minimumPadding * 10),
+              child: Text('Todo Text'),
+            ),
           ],
         ),
       ),
