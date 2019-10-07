@@ -21,7 +21,7 @@ class _SIFormState extends State<SIForm> {
       ),
       body: Container(
         margin: EdgeInsets.all(_minimumPadding * 5),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             getImageAsset(),
             Padding(
