@@ -1,76 +1,18 @@
 import 'package:flutter/material.dart';
+import 'ui/favoritesCity.dart';
+import 'ui/siForm.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      title: "Stateful App Test ..",
-      home: FavoriteCity(),
-    )
-  );
-}
+void main() => runApp(MyApp());
 
-class FavoriteCity extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _FavoriteCityState();
-  }
-}
-
-class _FavoriteCityState extends State<FavoriteCity> {
-
-  String nameCity = "";
-  String _currentItemSelected = 'Dinares';
-  var _currencies = ['Dinares', 'Dollars', 'Euros', 'Others'];
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Statefull App Test ..."),
-      ),
-      body: Container(
-        margin: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              onSubmitted: (String userInput) {
-                setState(() {
-                  nameCity = userInput;
-                });
-              },
-            ),
-            DropdownButton<String>(
-              items: _currencies.map((String dropDownStringItem) {
-                 return DropdownMenuItem<String>(
-                   value: dropDownStringItem,
-                   child: Text(dropDownStringItem),
-                 );
-               }).toList(),
-              onChanged: (String newValueSelected){
-                _onDropDownItemSelected(newValueSelected);
-              },
-              value: _currentItemSelected,
-            ),
-            Padding(
-              padding: EdgeInsets.all(30.0),
-              child: Text(
-                "The next city is $nameCity",
-                style: TextStyle(fontSize: 20.0),
-              ),
-            )
-           
-        ]
-      ),
-    )
-   );
+    return MaterialApp(
+      title: 'Welcome to Flutter',
+      home: SIForm() /*FavoriteCity()*/,
+    );
   }
-
-  void _onDropDownItemSelected(String newValueSelected) {
-    setState(() {
-      _currentItemSelected = newValueSelected;
-    });
-  }
-
 }
+
+
+
