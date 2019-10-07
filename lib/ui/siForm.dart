@@ -21,7 +21,7 @@ class _SIFormState extends State<SIForm> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Simple Interest Calculator'),
+        title: Text('Xamaira math'),
       ),
       body: Container(
         margin: EdgeInsets.all(_minimumPadding * 5),
