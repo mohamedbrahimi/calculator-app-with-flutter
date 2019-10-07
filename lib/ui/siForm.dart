@@ -32,9 +32,11 @@ class _SIFormState extends State<SIForm> {
               padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: 'Principal',
                     hintText: 'Enter Principal e.g 12000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     )
@@ -45,9 +47,11 @@ class _SIFormState extends State<SIForm> {
               padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: 'Rate of Interest',
                     hintText: 'In percent',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     )
@@ -61,9 +65,11 @@ class _SIFormState extends State<SIForm> {
                   Expanded(
                     child: TextField(
                       keyboardType: TextInputType.number,
+                      style: textStyle,
                       decoration: InputDecoration(
                           labelText: 'Term',
                           hintText: 'Time in years',
+                          labelStyle: textStyle,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           )
