@@ -50,31 +50,34 @@ class _SIFormState extends State<SIForm> {
                 ),
               ),
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'Term',
-                        hintText: 'Time in years',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        )
+            Padding(
+              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
+              child:  Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          labelText: 'Term',
+                          hintText: 'Time in years',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          )
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: DropdownButton<String>(
-                    items: _currencies.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }
-                    ).toList(),
-                    value: _defaultCurrency,
-                    onChanged: (String newValueSelected){
+                  Container(width: _minimumPadding * 5,),
+                  Expanded(
+                    child: DropdownButton<String>(
+                      items: _currencies.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }
+                      ).toList(),
+                      value: _defaultCurrency,
+                      onChanged: (String newValueSelected){
 
                     },
                   ),
