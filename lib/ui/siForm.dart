@@ -14,11 +14,14 @@ class _SIFormState extends State<SIForm> {
   final _minimumPadding = 5.0;
   @override
   Widget build(BuildContext context) {
+
+    TextStyle textStyle = Theme.of(context).textTheme.title;
+
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Simple Interest Calculator'),
+        title: Text('Xamaira math'),
       ),
       body: Container(
         margin: EdgeInsets.all(_minimumPadding * 5),
@@ -29,9 +32,11 @@ class _SIFormState extends State<SIForm> {
               padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: 'Principal',
                     hintText: 'Enter Principal e.g 12000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     )
@@ -42,9 +47,11 @@ class _SIFormState extends State<SIForm> {
               padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: 'Rate of Interest',
                     hintText: 'In percent',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     )
@@ -58,9 +65,11 @@ class _SIFormState extends State<SIForm> {
                   Expanded(
                     child: TextField(
                       keyboardType: TextInputType.number,
+                      style: textStyle,
                       decoration: InputDecoration(
                           labelText: 'Term',
                           hintText: 'Time in years',
+                          labelStyle: textStyle,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           )
@@ -92,7 +101,9 @@ class _SIFormState extends State<SIForm> {
                 children: <Widget>[
                   Expanded(
                     child: RaisedButton(
-                        child: Text('Calculate'),
+                        color: Theme.of(context).accentColor,
+                        textColor: Theme.of(context).primaryColorDark,
+                        child: Text('Calculate', textScaleFactor: 1.5,),
                         onPressed: () => {
 
                         }),
@@ -100,7 +111,9 @@ class _SIFormState extends State<SIForm> {
                   Container(width: _minimumPadding * 5,),
                   Expanded(
                     child: RaisedButton(
-                        child: Text('Reset'),
+                        color: Theme.of(context).primaryColorDark,
+                        textColor: Theme.of(context).primaryColorLight,
+                        child: Text('Reset', textScaleFactor: 1.5,),
                         onPressed: () => {
                           
                         }),
@@ -110,7 +123,7 @@ class _SIFormState extends State<SIForm> {
             ),
             Padding(
               padding: EdgeInsets.all(_minimumPadding * 10),
-              child: Text('Todo Text'),
+              child: Text('Todo Text', style: textStyle,),
             ),
           ],
         ),
