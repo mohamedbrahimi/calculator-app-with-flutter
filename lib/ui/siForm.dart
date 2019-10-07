@@ -14,6 +14,9 @@ class _SIFormState extends State<SIForm> {
   final _minimumPadding = 5.0;
   @override
   Widget build(BuildContext context) {
+
+    TextStyle textStyle = Theme.of(context).textTheme.title;
+
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomPadding: false,
