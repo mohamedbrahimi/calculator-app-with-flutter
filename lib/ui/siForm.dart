@@ -79,9 +79,20 @@ class _SIFormState extends State<SIForm> {
                       value: _defaultCurrency,
                       onChanged: (String newValueSelected){
 
-                    },
+                      },
+                    ),
                   ),
-                ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: RaisedButton(
+                        child: Text('Calculate'),
+                        onPressed: () => {
 
               ],
             )
