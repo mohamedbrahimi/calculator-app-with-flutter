@@ -101,7 +101,9 @@ class _SIFormState extends State<SIForm> {
                 children: <Widget>[
                   Expanded(
                     child: RaisedButton(
-                        child: Text('Calculate'),
+                        color: Theme.of(context).accentColor,
+                        textColor: Theme.of(context).primaryColorDark,
+                        child: Text('Calculate', textScaleFactor: 1.5,),
                         onPressed: () => {
 
                         }),
@@ -109,7 +111,9 @@ class _SIFormState extends State<SIForm> {
                   Container(width: _minimumPadding * 5,),
                   Expanded(
                     child: RaisedButton(
-                        child: Text('Reset'),
+                        color: Theme.of(context).primaryColorDark,
+                        textColor: Theme.of(context).primaryColorLight,
+                        child: Text('Reset', textScaleFactor: 1.5,),
                         onPressed: () => {
                           
                         }),
