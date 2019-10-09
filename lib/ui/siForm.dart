@@ -10,8 +10,20 @@ class SIForm extends StatefulWidget {
 
 class _SIFormState extends State<SIForm> {
   var _currencies = ['Dinares', 'Dollares', 'Euros', 'Others'];
-  var _defaultCurrency = 'Dinares';
+  var _defaultCurrency = '';
   final _minimumPadding = 5.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _defaultCurrency = _currencies[0];
+  }
+
+  TextEditingController principalController = TextEditingController();
+  TextEditingController ratioController = TextEditingController();
+  TextEditingController termController = TextEditingController();
+
+  var _displayResult = '...';
   @override
   Widget build(BuildContext context) {
 
@@ -33,6 +45,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: principalController,
                 decoration: InputDecoration(
                     labelText: 'Principal',
                     hintText: 'Enter Principal e.g 12000',
@@ -48,6 +61,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: ratioController,
                 decoration: InputDecoration(
                     labelText: 'Rate of Interest',
                     hintText: 'In percent',
@@ -66,6 +80,7 @@ class _SIFormState extends State<SIForm> {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       style: textStyle,
+                      controller: termController,
                       decoration: InputDecoration(
                           labelText: 'Term',
                           hintText: 'Time in years',
@@ -88,7 +103,10 @@ class _SIFormState extends State<SIForm> {
                       ).toList(),
                       value: _defaultCurrency,
                       onChanged: (String newValueSelected){
-
+                        setState((){
+                          _defaultCurrency = newValueSelected;
+                          _displayResult = _calculateTotalReturns();
+                        });
                       },
                     ),
                   ),
@@ -104,8 +122,10 @@ class _SIFormState extends State<SIForm> {
                         color: Theme.of(context).accentColor,
                         textColor: Theme.of(context).primaryColorDark,
                         child: Text('Calculate', textScaleFactor: 1.5,),
-                        onPressed: () => {
-
+                        onPressed: () {
+                          setState(() {
+                            _displayResult = _calculateTotalReturns();
+                          });
                         }),
                   ),
                   Container(width: _minimumPadding * 5,),
@@ -114,8 +134,10 @@ class _SIFormState extends State<SIForm> {
                         color: Theme.of(context).primaryColorDark,
                         textColor: Theme.of(context).primaryColorLight,
                         child: Text('Reset', textScaleFactor: 1.5,),
-                        onPressed: () => {
-                          
+                        onPressed: () {
+                          setState(() {
+                            _reset();
+                          });
                         }),
                   ),
                 ],
@@ -123,7 +145,7 @@ class _SIFormState extends State<SIForm> {
             ),
             Padding(
               padding: EdgeInsets.all(_minimumPadding * 10),
-              child: Text('Todo Text', style: textStyle,),
+              child: Text(this._displayResult, style: textStyle,),
             ),
           ],
         ),
@@ -138,5 +160,26 @@ class _SIFormState extends State<SIForm> {
       child: image,
       margin: EdgeInsets.all(_minimumPadding * 10),
     );
+  }
+
+  String _calculateTotalReturns() {
+
+    double principal = double.parse(principalController.text);
+    double ratio = double.parse(ratioController.text);
+    double term = double.parse(termController.text);
+
+    double totalAmountPayable = (principal * ratio * term) / 100;
+
+    String result = 'After $term years, your investment will be worth $totalAmountPayable $_defaultCurrency';
+    return result;
+
+  }
+
+  void _reset() {
+    principalController.text = '';
+    ratioController.text = '';
+    termController.text = '';
+    _displayResult = '';
+    _defaultCurrency = _currencies[0];
   }
 }
