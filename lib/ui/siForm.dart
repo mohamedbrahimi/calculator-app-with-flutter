@@ -45,6 +45,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: principalController,
                 decoration: InputDecoration(
                     labelText: 'Principal',
                     hintText: 'Enter Principal e.g 12000',
@@ -60,6 +61,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: ratioController,
                 decoration: InputDecoration(
                     labelText: 'Rate of Interest',
                     hintText: 'In percent',
@@ -78,6 +80,7 @@ class _SIFormState extends State<SIForm> {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       style: textStyle,
+                      controller: termController,
                       decoration: InputDecoration(
                           labelText: 'Term',
                           hintText: 'Time in years',
