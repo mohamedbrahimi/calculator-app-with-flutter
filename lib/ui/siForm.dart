@@ -10,7 +10,7 @@ class SIForm extends StatefulWidget {
 
 class _SIFormState extends State<SIForm> {
   var _currencies = ['Dinares', 'Dollares', 'Euros', 'Others'];
-  var _defaultCurrency = 'Dinares';
+  var _defaultCurrency = '';
   final _minimumPadding = 5.0;
   @override
   Widget build(BuildContext context) {
