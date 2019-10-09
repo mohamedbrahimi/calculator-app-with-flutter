@@ -134,8 +134,10 @@ class _SIFormState extends State<SIForm> {
                         color: Theme.of(context).primaryColorDark,
                         textColor: Theme.of(context).primaryColorLight,
                         child: Text('Reset', textScaleFactor: 1.5,),
-                        onPressed: () => {
-                          
+                        onPressed: () {
+                          setState(() {
+                            _reset();
+                          });
                         }),
                   ),
                 ],
