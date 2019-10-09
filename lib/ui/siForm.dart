@@ -103,7 +103,10 @@ class _SIFormState extends State<SIForm> {
                       ).toList(),
                       value: _defaultCurrency,
                       onChanged: (String newValueSelected){
-
+                        setState((){
+                          _defaultCurrency = newValueSelected;
+                          _displayResult = _calculateTotalReturns();
+                        });
                       },
                     ),
                   ),
