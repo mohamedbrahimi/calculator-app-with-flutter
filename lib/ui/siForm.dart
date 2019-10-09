@@ -145,7 +145,7 @@ class _SIFormState extends State<SIForm> {
             ),
             Padding(
               padding: EdgeInsets.all(_minimumPadding * 10),
-              child: Text('Todo Text', style: textStyle,),
+              child: Text(this._displayResult, style: textStyle,),
             ),
           ],
         ),
