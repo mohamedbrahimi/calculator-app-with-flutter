@@ -12,6 +12,18 @@ class _SIFormState extends State<SIForm> {
   var _currencies = ['Dinares', 'Dollares', 'Euros', 'Others'];
   var _defaultCurrency = '';
   final _minimumPadding = 5.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _defaultCurrency = _currencies[0];
+  }
+
+  TextEditingController principalController = TextEditingController();
+  TextEditingController ratioController = TextEditingController();
+  TextEditingController termController = TextEditingController();
+
+  var _displayResult = '...';
   @override
   Widget build(BuildContext context) {
 
