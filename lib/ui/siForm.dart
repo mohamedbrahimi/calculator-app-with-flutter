@@ -161,4 +161,25 @@ class _SIFormState extends State<SIForm> {
       margin: EdgeInsets.all(_minimumPadding * 10),
     );
   }
+
+  String _calculateTotalReturns() {
+
+    double principal = double.parse(principalController.text);
+    double ratio = double.parse(ratioController.text);
+    double term = double.parse(termController.text);
+
+    double totalAmountPayable = (principal * ratio * term) / 100;
+
+    String result = 'After $term years, your investment will be worth $totalAmountPayable $_defaultCurrency';
+    return result;
+
+  }
+
+  void _reset() {
+    principalController.text = '';
+    ratioController.text = '';
+    termController.text = '';
+    _displayResult = '';
+    _defaultCurrency = _currencies[0];
+  }
 }
