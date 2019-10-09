@@ -122,8 +122,10 @@ class _SIFormState extends State<SIForm> {
                         color: Theme.of(context).accentColor,
                         textColor: Theme.of(context).primaryColorDark,
                         child: Text('Calculate', textScaleFactor: 1.5,),
-                        onPressed: () => {
-
+                        onPressed: () {
+                          setState(() {
+                            _displayResult = _calculateTotalReturns();
+                          });
                         }),
                   ),
                   Container(width: _minimumPadding * 5,),
