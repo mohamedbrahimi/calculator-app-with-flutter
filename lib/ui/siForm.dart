@@ -9,6 +9,9 @@ class SIForm extends StatefulWidget {
 }
 
 class _SIFormState extends State<SIForm> {
+
+  var _formKey = GlobalKey<FormState>();
+
   var _currencies = ['Dinares', 'Dollares', 'Euros', 'Others'];
   var _defaultCurrency = '';
   final _minimumPadding = 5.0;
