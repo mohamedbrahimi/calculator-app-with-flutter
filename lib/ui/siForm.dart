@@ -27,6 +27,7 @@ class _SIFormState extends State<SIForm> {
   TextEditingController termController = TextEditingController();
 
   var _displayResult = '...';
+
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.title;
@@ -92,64 +93,79 @@ class _SIFormState extends State<SIForm> {
                           )
                       ),
                     ),
-                  ),
-                  Container(width: _minimumPadding * 5,),
-                  Expanded(
-                    child: DropdownButton<String>(
-                      items: _currencies.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }
-                      ).toList(),
-                      value: _defaultCurrency,
-                      onChanged: (String newValueSelected){
-                        setState((){
-                          _defaultCurrency = newValueSelected;
-                          _displayResult = _calculateTotalReturns();
-                        });
-                      },
+                    Container(
+                      width: _minimumPadding * 5,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: RaisedButton(
-                        color: Theme.of(context).accentColor,
-                        textColor: Theme.of(context).primaryColorDark,
-                        child: Text('Calculate', textScaleFactor: 1.5,),
-                        onPressed: () {
+                    Expanded(
+                      child: DropdownButton<String>(
+                        items: _currencies.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        value: _defaultCurrency,
+                        onChanged: (String newValueSelected) {
                           setState(() {
+                            _defaultCurrency = newValueSelected;
                             _displayResult = _calculateTotalReturns();
                           });
-                        }),
-                  ),
-                  Container(width: _minimumPadding * 5,),
-                  Expanded(
-                    child: RaisedButton(
-                        color: Theme.of(context).primaryColorDark,
-                        textColor: Theme.of(context).primaryColorLight,
-                        child: Text('Reset', textScaleFactor: 1.5,),
-                        onPressed: () {
-                          setState(() {
-                            _reset();
-                          });
-                        }),
-                  ),
-                ],
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(_minimumPadding * 10),
-              child: Text(this._displayResult, style: textStyle,),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.only(
+                    top: _minimumPadding, bottom: _minimumPadding),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: RaisedButton(
+                          color: Theme.of(context).accentColor,
+                          textColor: Theme.of(context).primaryColorDark,
+                          child: Text(
+                            'Calculate',
+                            textScaleFactor: 1.5,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (_formKey.currentState.validate()){
+                                _displayResult = _calculateTotalReturns();
+                              }
+                            });
+                          }),
+                    ),
+                    Container(
+                      width: _minimumPadding * 5,
+                    ),
+                    Expanded(
+                      child: RaisedButton(
+                          color: Theme.of(context).primaryColorDark,
+                          textColor: Theme.of(context).primaryColorLight,
+                          child: Text(
+                            'Reset',
+                            textScaleFactor: 1.5,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _reset();
+                            });
+                          }),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(_minimumPadding * 10),
+                child: Text(
+                  this._displayResult,
+                  style: textStyle,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -169,7 +185,6 @@ class _SIFormState extends State<SIForm> {
   }
 
   String _calculateTotalReturns() {
-
     double principal = double.parse(principalController.text);
     double ratio = double.parse(ratioController.text);
     double term = double.parse(termController.text);
