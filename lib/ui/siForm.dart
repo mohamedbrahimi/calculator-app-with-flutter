@@ -29,7 +29,6 @@ class _SIFormState extends State<SIForm> {
   var _displayResult = '...';
   @override
   Widget build(BuildContext context) {
-
     TextStyle textStyle = Theme.of(context).textTheme.title;
 
     // TODO: implement build
@@ -158,7 +157,11 @@ class _SIFormState extends State<SIForm> {
 
   Widget getImageAsset() {
     AssetImage assetImage = AssetImage('images/bank.png');
-    Image image = Image(image: assetImage, width: 200.0, height: 150.0,);
+    Image image = Image(
+      image: assetImage,
+      width: 200.0,
+      height: 150.0,
+    );
     return Container(
       child: image,
       margin: EdgeInsets.all(_minimumPadding * 10),
@@ -173,9 +176,9 @@ class _SIFormState extends State<SIForm> {
 
     double totalAmountPayable = (principal * ratio * term) / 100;
 
-    String result = 'After $term years, your investment will be worth $totalAmountPayable $_defaultCurrency';
+    String result =
+        'After $term years, your investment will be worth $totalAmountPayable $_defaultCurrency';
     return result;
-
   }
 
   void _reset() {
