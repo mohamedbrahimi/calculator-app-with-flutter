@@ -38,59 +38,87 @@ class _SIFormState extends State<SIForm> {
       appBar: AppBar(
         title: Text('Xamaira math'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(_minimumPadding * 5),
-        child: ListView(
-          children: <Widget>[
-            getImageAsset(),
-            Padding(
-              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                style: textStyle,
-                controller: principalController,
-                decoration: InputDecoration(
-                    labelText: 'Principal',
-                    hintText: 'Enter Principal e.g 12000',
-                    labelStyle: textStyle,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: EdgeInsets.all(_minimumPadding * 5),
+          child: ListView(
+            children: <Widget>[
+              getImageAsset(),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: _minimumPadding, bottom: _minimumPadding),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  style: textStyle,
+                  controller: principalController,
+                  validator: (String value) {
+
+                    return value.isEmpty || value.hashCode.isNaN ? 'Please enter principal amount' : null;
+                  },
+                  decoration: InputDecoration(
+                     // icon: Icon(Icons.money_off),
+                      labelText: 'Principal',
+                      hintText: 'Enter Principal e.g 12000',
+                      labelStyle: textStyle,
+                      errorStyle: TextStyle(
+                        color: Colors.yellowAccent,
+                        fontSize: 15.0,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                style: textStyle,
-                controller: ratioController,
-                decoration: InputDecoration(
-                    labelText: 'Rate of Interest',
-                    hintText: 'In percent',
-                    labelStyle: textStyle,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )
+              Padding(
+                padding: EdgeInsets.only(
+                    top: _minimumPadding, bottom: _minimumPadding),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  style: textStyle,
+                  controller: ratioController,
+                  validator: (String value) {
+
+                    return value.isEmpty || value.hashCode.isNaN ? 'Please enter Rate of Interest' : null;
+                  },
+                  decoration: InputDecoration(
+                      labelText: 'Rate of Interest',
+                      hintText: 'In percent',
+                      labelStyle: textStyle,
+                      errorStyle: TextStyle(
+                        color: Colors.yellowAccent,
+                        fontSize: 15.0,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: _minimumPadding, bottom: _minimumPadding),
-              child:  Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      style: textStyle,
-                      controller: termController,
-                      decoration: InputDecoration(
-                          labelText: 'Term',
-                          hintText: 'Time in years',
-                          labelStyle: textStyle,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          )
+              Padding(
+                padding: EdgeInsets.only(
+                    top: _minimumPadding, bottom: _minimumPadding),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        style: textStyle,
+                        controller: termController,
+                        validator: (String value) {
+
+                          return value.isEmpty || value.hashCode.isNaN ? 'Please enter Rate of Interest' : null;
+                        },
+                        decoration: InputDecoration(
+                            labelText: 'Term',
+                            hintText: 'Time in years',
+                            labelStyle: textStyle,
+                            errorStyle: TextStyle(
+                              color: Colors.yellowAccent,
+                              fontSize: 15.0,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            )),
                       ),
                     ),
                     Container(
